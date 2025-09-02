@@ -34,6 +34,14 @@ class _TodoScreenState extends State<TodoScreen> {
       _titleController.clear();
       _descriptionController.clear();
       _titleFocusNode.requestFocus();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Task title cannot be empty"),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
   }
 
@@ -73,8 +81,6 @@ class _TodoScreenState extends State<TodoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
